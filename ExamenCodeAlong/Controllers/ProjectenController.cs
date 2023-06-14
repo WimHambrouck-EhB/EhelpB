@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ExamenCodeAlong.Data;
 using ExamenCodeAlong.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ExamenCodeAlong.Controllers
 {
+
     public class ProjectenController : Controller
     {
         private readonly EhelpBContext _context;
@@ -29,6 +31,7 @@ namespace ExamenCodeAlong.Controllers
 
 
         // GET: Projecten/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -39,6 +42,7 @@ namespace ExamenCodeAlong.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("ProjectNaam,Status,HuidigBudget")] Project project)
         {
             if (ModelState.IsValid)
@@ -52,6 +56,7 @@ namespace ExamenCodeAlong.Controllers
 
         }
 
+        [Authorize]
         public async Task<IActionResult> Koppelpersoneel(KoppelpersoneelViewModel? viewModel)
         {
             viewModel ??= new KoppelpersoneelViewModel();
@@ -79,6 +84,7 @@ namespace ExamenCodeAlong.Controllers
 
         [HttpPost, ActionName("Koppelpersoneel")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> KoppelpersoneelVerzenden(KoppelpersoneelViewModel? viewModel)
         {
             if (viewModel == null || viewModel.Project == null)
@@ -118,11 +124,6 @@ namespace ExamenCodeAlong.Controllers
 
 
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool ProjectExists(string id)
-        {
-            return (_context.Projecten?.Any(e => e.ProjectNaam == id)).GetValueOrDefault();
         }
     }
 }

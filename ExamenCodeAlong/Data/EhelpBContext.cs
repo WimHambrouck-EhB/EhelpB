@@ -4,10 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ExamenCodeAlong.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace ExamenCodeAlong.Data
 {
-    public class EhelpBContext : DbContext
+    public class EhelpBContext : IdentityDbContext<IdentityUser>
     {
         public EhelpBContext(DbContextOptions<EhelpBContext> options)
             : base(options)
