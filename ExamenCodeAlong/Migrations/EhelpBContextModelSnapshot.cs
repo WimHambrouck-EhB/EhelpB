@@ -56,7 +56,7 @@ namespace ExamenCodeAlong.Migrations
 
                     b.HasIndex("VestigingId");
 
-                    b.ToTable("Personeelsleden");
+                    b.ToTable("Personeelsleden", (string)null);
 
                     b.HasData(
                         new
@@ -132,7 +132,7 @@ namespace ExamenCodeAlong.Migrations
 
                     b.HasIndex("ProjectId");
 
-                    b.ToTable("PersoneelslidProject");
+                    b.ToTable("PersoneelslidProject", (string)null);
 
                     b.HasData(
                         new
@@ -168,7 +168,7 @@ namespace ExamenCodeAlong.Migrations
 
                     b.HasKey("ProjectNaam");
 
-                    b.ToTable("Projecten");
+                    b.ToTable("Projecten", (string)null);
 
                     b.HasData(
                         new
@@ -199,7 +199,7 @@ namespace ExamenCodeAlong.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Vestigingen");
+                    b.ToTable("Vestigingen", (string)null);
 
                     b.HasData(
                         new
