@@ -1,0 +1,27 @@
+﻿@model IEnumerable<ExamenCodeAlong.Models.Project>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+@foreach (var project in Model)
+{
+    <h2>@Html.DisplayFor(modelItem => project.ProjectNaam)</h2>
+    @Html.DisplayFor(modelItem => project.Status)
+
+    <ul>
+        @foreach (var personeel in project.PersoneelslidProjecten)
+        {
+            <li>@Html.DisplayFor(modelItem => personeel.Personeelslid.Voornaam), @Html.DisplayFor(modelItem => personeel.Personeelslid.Achternaam)</li>
+        }
+    </ul>
+
+    <p>Aantal personeelsleden: @Html.DisplayFor(modelItem => project.PersoneelslidProjecten.Count)</p>
+}
+
