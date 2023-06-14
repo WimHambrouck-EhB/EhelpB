@@ -1,0 +1,31 @@
+﻿@model KoppelpersoneelViewModel
+
+<form asp-action="Koppelpersoneel" method="get">
+    <select asp-for="Project.ProjectNaam" class="form-control" asp-items="ViewBag.Projecten" onchange="this.form.submit()">
+        <option selected="selected" value="">Kies een project...</option>
+    </select>
+    <button type="submit" class="btn btn-primary">Selecteer</button>
+</form>
+
+@if (Model.Koppelingen.Any())
+{
+    <form asp-action="Koppelpersoneel" method="post">
+        <input hidden asp-for="Project.ProjectNaam" value="@Model.Project.ProjectNaam" />
+        @if (Model.Koppelingen != null)
+        {
+            @for (int i = 0; i < Model.Koppelingen.Count; i++)
+            {
+                <input type="checkbox" id="Koppelingen[@i].value" name="Koppelingen[@i].value" @(Model.Koppelingen.ElementAt(i).Value == true ? "checked" : "") value="true" />
+                <label asp-for="Koppelingen[@i].value">@Model.Koppelingen.ElementAt(i).Key.Username</label>
+                <input hidden id="Koppelingen[@i].key.Id" name="Koppelingen[@i].key.Id" value="@Model.Koppelingen.ElementAt(i).Key.Id" />
+                <input type="hidden" name="Koppelingen[@i].value" value="false" />
+
+
+            }
+
+            <input type="submit" value="Verzend" class="btn btn-default" />
+        }
+    </form>
+}
+
+

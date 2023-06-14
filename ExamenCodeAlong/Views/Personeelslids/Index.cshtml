@@ -22,7 +22,10 @@
                 @Html.DisplayNameFor(model => model.Achternaam)
             </th>
             <th>
-                Afbeelding
+                @Html.DisplayNameFor(model => model.Wachtwoord)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WachtwoordControle)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Vestiging)
@@ -43,6 +46,10 @@
                 @Html.DisplayFor(modelItem => item.Achternaam)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Wachtwoord)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WachtwoordControle)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Vestiging.Naam)
